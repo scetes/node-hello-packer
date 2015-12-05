@@ -1,0 +1,31 @@
+{
+
+  "builders": [ 
+      {
+        "type": "docker",
+        "image": "ubuntu",
+        "commit": true
+      }
+
+  ],
+
+  "provisioners": [
+
+    {
+
+      "type": "shell",
+      "scripts": ["updates.sh"]
+    }
+  ],
+
+  "post-processors": [
+    
+      {
+        "type": "docker-tag",
+        "repository": "scetes/packer-ubuntu-only"
+      }
+
+  ]
+
+
+}
