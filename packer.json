@@ -3,27 +3,33 @@
   "builders": [ 
       {
         "type": "docker",
+        "name": "dockernodeweb",
         "image": "ubuntu",
         "commit": true
       }
+
 
   ],
 
   "provisioners": [
 
     {
-
       "type": "shell",
+      "only": ["dockernodeweb"],
       "scripts": ["updates.sh"]
     }
+
   ],
 
   "post-processors": [
     
       {
         "type": "docker-tag",
-        "repository": "scetes/packer-ubuntu-only"
+        "only": ["dockernodeweb"],
+        "repository": "scetes/packer-ubuntu-only",
+        "force": "true"
       }
+     
 
   ]
 
